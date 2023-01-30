@@ -7,11 +7,9 @@ import YoutubeIcon from "../../components/icons/Youtube.astro";
 import LinkedinIcon from "../../components/icons/Linkedin.astro";
 import TwitterIcon from "../../components/icons/Twitter.astro";
 import GithubIcon from "../../components/icons/Github.astro";
-
 import { getDirectusClient } from "../../utils/get-directus-client";
 import { getAssetURL } from "../../utils/get-asset-url";
 import { formatRelativeTime } from "../../utils/format-relative-time";
-
 export async function getStaticPaths() {
   const directus = await getDirectusClient();
   const response = await directus.items("articles").readByQuery({
@@ -19,9 +17,7 @@ export async function getStaticPaths() {
     filter: { status: { _eq: "published" } },
     limit: -1,
   });
-
   let articles = response.data;
-
   for (const [index, article] of Object.entries(articles)) {
     const moreArticlesResponse = await directus.items("articles").readByQuery({
       fields: ["*", "author.avatar", "author.first_name", "author.last_name"],
@@ -30,7 +26,6 @@ export async function getStaticPaths() {
       },
       limit: 2,
     });
-
     const formattedMoreArticles = moreArticlesResponse.data.map(
       (formattedMoreArticle) => {
         return {
@@ -41,7 +36,6 @@ export async function getStaticPaths() {
         };
       }
     );
-
     articles[index] = {
       params: { id: article.id.toString() },
       props: {
@@ -54,11 +48,10 @@ export async function getStaticPaths() {
     };
   }
 
-  return {
-    params: articles,
-  };
+  return articles;
 }
-const { article } = Astro.params;
+
+const { article } = Astro.props;
 ---
 
 <DefaultLayout>
