@@ -1,15 +1,40 @@
 ---
-import MonospaceIcon from './icons/Monospace.astro'
+import Nav from "./Nav.astro";
+import ChevronDroite from "./icons/ChevronDroite.astro";
+import GreenDot from "./icons/GreenDot.astro";
+import Location from "./icons/Location.astro";
+import MonospaceIcon from "./icons/Monospace.astro";
 ---
 
-<header>
-  <nav class="container">
-    <a href="/">
-      <MonospaceIcon />
-    </a>
-    <span class="header__description">
-      An example site powered by <span class="accent">Astro</span> and
-      <span class="accent">Directus</span>.
-    </span>
-  </nav>
+<header class="py-2 flex items-center justify-between fixed top-0 w-full z-10">
+  <div class="flex items-center gap-5 ml-container">
+    <div class="bordered-black inline-flex items-center gap-3 bg-background">
+      <p class="">Louis Lasserre</p>
+      <ChevronDroite />
+    </div>
+    <div class="items-center gap-3 hidden md:inline-flex" data-disapear>
+      <GreenDot />
+      <p class="">Front-end React développeur pour Dots</p>
+    </div>
+    <div class="items-center gap-3 hidden md:inline-flex" data-disapear>
+      <Location />
+      <p class="">Situé à Bordeaux</p>
+    </div>
+  </div>
+  <Nav />
 </header>
+
+<script lang="ts">
+  const dataDisapear = document.querySelectorAll("[data-disapear]");
+  document.addEventListener("scroll", () => {
+    if (window.scrollY > 150) {
+      Array.from(dataDisapear).forEach((element) => {
+        element.style.opacity = "0";
+      });
+    } else {
+      Array.from(dataDisapear).forEach((element) => {
+        element.style.opacity = "1";
+      });
+    }
+  });
+</script>

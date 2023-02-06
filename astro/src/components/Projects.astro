@@ -1,0 +1,65 @@
+---
+import Carousel from "./Carousel.astro";
+import SectionTitle from "./SectionTitle.astro";
+import type { buttonProps } from "./button.astro";
+
+export type TCarouselData = {
+  img: string;
+  title: string;
+  lead: string;
+  link: buttonProps;
+};
+
+const carouselData: TCarouselData[] = [
+  {
+    img: "assets/images/place-holder.png",
+    title: "Project title",
+    lead: "Petite phrase pour décrire le projet",
+    link: {
+      type: "in",
+      name: "Accéder au projet",
+      url: "/",
+    },
+  },
+  {
+    img: "assets/images/place-holder.png",
+    title: "Project title 2",
+    lead: "Petite phrase pour décrire le projet",
+    link: {
+      type: "in",
+      name: "Accéder au projet",
+      url: "/",
+    },
+  },
+  {
+    img: "assets/images/place-holder.png",
+    title: "Project title 3",
+    lead: "Petite phrase pour décrire le projet",
+    link: {
+      type: "in",
+      name: "Accéder au projet",
+      url: "/",
+    },
+  },
+  {
+    img: "assets/images/place-holder.png",
+    title: "Project title 4",
+    lead: "Petite phrase pour décrire le projet",
+    link: {
+      type: "in",
+      name: "Accéder au projet",
+      url: "/",
+    },
+  },
+];
+---
+
+<SectionTitle number="2" text="Projets *Principaux" />
+<section class="container mx-auto">
+  <p class="max-w-3xl">
+    Après avoir travaillé pendant plusieurs années sur divers projets web ainsi
+    qu’en ayant obtenu la certification opquast, je construit chacun de mes
+    travaux sur 3 piliers fondamentaux
+  </p>
+  <Carousel {carouselData} />
+</section>

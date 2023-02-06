@@ -1,0 +1,25 @@
+---
+const { data } = Astro.props;
+---
+
+<div class="flex w-5/6 mx-auto justify-between gap-4 flex-col sm:flex-row">
+  {
+    data.map((element) => {
+      const { title, description } = element;
+      return (
+        <div class="w-full p-4">
+          <div class="w-full aspect-square mx-auto">
+            <img
+              class="object-contain w-full h-full"
+              src="/assets/images/place-holder.png"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <h3 class="text-secondary">{title}</h3>
+          <p>{description}</p>
+        </div>
+      );
+    })
+  }
+</div>
