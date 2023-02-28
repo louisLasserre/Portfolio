@@ -1,0 +1,26 @@
+---
+import Button from "./button.astro";
+import Plane from "./icons/Plane.astro";
+import Rocket from "./icons/Rocket.astro";
+
+const link = {
+  name: "Mon parcours",
+  type: "in",
+  url: "/",
+};
+---
+
+<section class="container mx-auto">
+  <p class="mb-8">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, dolor eos in
+    rem velit itaque quidem porro ullam eaque excepturi alias eos in rem velit
+    itaque quidem porro ullam eaque excepturi alias
+  </p>
+  <Button link={link} />
+  <p class="mt-16">
+    <div class="inline-flex gap-4"><Plane /><Rocket /></div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, dolor eos in rem
+    velit itaque quidem porro ullam eaque excepturi alias eos in rem velit itaque
+    quidem porro ullam eaque excepturi alias
+  </p>
+</section>

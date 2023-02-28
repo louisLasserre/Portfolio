@@ -47,7 +47,18 @@
       @apply text-Xlh3
     }
   }
+
 }
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+
+
 
 html, body {
   width: 100vw;
@@ -74,4 +85,52 @@ p, span {
 
 body {
   @apply bg-background;
+}
+
+
+
+/* ---------------cointainer stuff ---------------------*/
+@layer components {
+  .container {
+    @apply px-4
+  }
+}
+
+.ml-c {
+  margin-left: var(--start-container);
+  @apply md:px-4
+}
+.pl-c {
+  padding-left: var(--start-container);
+
+}
+
+:root {
+  --start-container: 1rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --start-container: calc((100vw - 640px)/2);
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --start-container: calc((100vw - 768px)/2);
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --start-container: calc((100vw - 1024px)/2);
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --start-container: calc((100vw - 1280px)/2);
+  }
+}
+@media (min-width: 1536px) {
+  :root {
+    --start-container: calc((100vw - 1536px)/2);
+  }
 }

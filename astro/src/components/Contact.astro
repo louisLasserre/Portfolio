@@ -1,0 +1,42 @@
+---
+import type { TLinkType } from "./button.astro";
+import File from "./icons/File.astro";
+import Mail from "./icons/Mail.astro";
+import Phone from "./icons/Phone.astro";
+
+interface ContactProps {
+  contactData: {
+    icon: "phone" | "mail" | "file";
+    label: string;
+    link: TLinkType;
+  }[];
+}
+
+const { contactData } = Astro.props as ContactProps;
+
+const correspondingIcons = { phone: Phone, mail: Mail, file: File };
+---
+
+<section class="container mx-auto">
+  <p>Mon travail vous intéresse ? n’hésitez pas à me contacter</p>
+
+  {
+    contactData.map((data) => {
+      let Element = correspondingIcons[data.icon];
+      return (
+        <a href={data.link.url} class="mt-6 block">
+          <div class="flex gap-8">
+            <Element />
+            <p>{data.label}</p>
+          </div>
+        </a>
+      );
+    })
+  }
+
+  <p class="block mt-6">
+    Au plaisir de se rencontrer autour d’un <span class="text-secondary mr-2"
+      >café</span
+    > ☕️
+  </p>
+</section>

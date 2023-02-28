@@ -1,44 +1,83 @@
 ---
-import GithubIcon from './icons/Github.astro'
-import YoutubeIcon from './icons/Youtube.astro'
-import LinkedinIcon from './icons/Linkedin.astro'
-import TwitterIcon from './icons/Twitter.astro'
+import LinkColumn from "@components/LinkColumn.astro";
+import PurpleHeart from "@components/icons/PurpleHeart.astro";
 
-const currentYear = new Date().getFullYear()
+import Github from "@assets/icons/Github.png";
+import Linkedin from "@assets/icons/Linkedin.png";
+
+const currentYear = new Date().getFullYear();
+
+//© {currentYear} Monospace Inc
+
+const PlanDuSiteLinks = [
+  {
+    type: "in",
+    name: "Projets",
+    url: "/#projects",
+  },
+  {
+    type: "in",
+    name: "À propos",
+    url: "/#about",
+  },
+  {
+    type: "in",
+    name: "Contact",
+    url: "/#contact",
+  },
+];
+const LegalsLinks = [
+  {
+    type: "in",
+    name: "Mentions légales",
+    url: "/legals",
+  },
+];
 ---
 
-<footer>
-  <div class="container footer__topWrapper">
-    <span>
-      Generated with <span class="underline">Astro</span>, powered by
-      <span class="underline">Directus</span>.
-    </span>
-  </div>
-  <div class="container footer__bottomWrapper">
-    <span class="footer__copyright">
-      © { currentYear } Monospace Inc
-    </span>
-    <ul class="footer__socials">
-      <li>
-        <a href="https://github.com/directus" class="logo" target="_blank" rel="noreferrer noopener">
-          <GithubIcon />
-        </a>
-      </li>
-      <li>
-        <a href="https://www.youtube.com/c/DirectusVideos" class="logo" target="_blank" rel="noreferrer noopener">
-          <YoutubeIcon />
-        </a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/company/directus-io" class="logo" target="_blank" rel="noreferrer noopener">
-          <LinkedinIcon />
-        </a>
-      </li>
-      <li>
-        <a href="https://twitter.com/directus" class="logo" target="_blank" rel="noreferrer noopener">
-          <TwitterIcon />
-        </a>
-      </li>
-    </ul>
+<footer class="bg-primary text-white py-8 mt-8">
+  <div class="container mx-auto">
+    <div class="flex flex-col md:flex-row md:justify-between">
+      <article>
+        <p class="font-title size-h2 md:leading-[4.3rem]">
+          Louis<br />LASSERRE
+        </p>
+        <p class="block mt-2 md:mt-6">
+          Développeur <span class="text-secondary">front-end créatif</span>
+        </p>
+      </article>
+      <nav class="md:flex md:align-top gap-12 md:mr-20">
+        <LinkColumn links={PlanDuSiteLinks} title="Plan du site" />
+        <LinkColumn links={LegalsLinks} title="Legals" />
+      </nav>
+    </div>
+    <p class="mt-6 w-full text-center md:text-left">
+      Made with <PurpleHeart /> using <a
+        class="text-secondary"
+        href="/https://astro.build/">Astro</a
+      >
+    </p>
+    <div class="h-[0.15rem] bg-white w-full my-4"></div>
+    <div class="flex justify-between">
+      <p class="md:block">
+        © {currentYear} Louis LASSERRE Tous droits réservervés
+      </p>
+      <div class="">
+        <a class="mr-2" href=""
+          ><img
+            class="w-8 inline-block"
+            src={Github}
+            alt="accéder à mon github"
+          /></a
+        >
+        <a href=""
+          ><img
+            class="w-8 inline-block"
+            src={Linkedin}
+            alt="accéder à mon linkedin"
+          /></a
+        >
+      </div>
+    </div>
   </div>
 </footer>

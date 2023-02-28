@@ -3,12 +3,15 @@ import ChevronDroiteSecondary from "./icons/ChevronDroiteSecondary.astro";
 
 type Tlink = "in" | "out";
 
-export interface buttonProps {
+export type TLinkType = {
   type: Tlink;
   name: string;
   url: string;
+};
+export interface buttonProps {
+  link: TLinkType;
 }
-const { link } = Astro.props;
+const { link } = Astro.props as buttonProps;
 const { type, name, url } = link;
 ---
 
