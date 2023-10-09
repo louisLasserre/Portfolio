@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Merriweather-sans';
+  src: url('/fonts/MerriweatherSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap
+}
+@font-face {
+  font-family: 'Raleway-regular';
+  src: url('/fonts/Raleway-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap
+}
+@font-face {
+  font-family: 'Raleway-semibold';
+  src: url('/fonts/Raleway-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap
+}
+
+@layer base {
+
+  .bordered-black {
+    @apply border-[2px] border-primary p-2;
+  }
+  .size-h1 {
+    @apply text-h1;
+  }
+  .size-h2 {
+    @apply text-h2;
+  }
+  .size-h3 {
+    @apply text-h3;
+  }
+  @media screen and (min-width: 767px) {
+    .size-h1 {
+      @apply text-Xlh1
+    }
+    .size-h2 {
+      @apply text-Xlh2
+    }
+    .size-h3 {
+      @apply text-Xlh3
+    }
+  }
+
+}
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+html, body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+
+div[data-disapear] {
+  transition: all 0.2s;
+}
+
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-title;
+}
+a, button {
+  @apply font-button;
+}
+p, span {
+  @apply font-text;
+}
+
+body {
+  @apply bg-background;
+}
+
+
+
+/* ---------------cointainer stuff ---------------------*/
+@layer components {
+  .container {
+    @apply px-4
+  }
+}
+
+.ml-c {
+  margin-left: var(--start-container);
+  @apply md:px-4
+}
+.pl-c {
+  padding-left: var(--start-container);
+
+}
+
+:root {
+  --start-container: 1rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --start-container: calc((100vw - 640px)/2);
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --start-container: calc((100vw - 768px)/2);
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --start-container: calc((100vw - 1024px)/2);
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --start-container: calc((100vw - 1280px)/2);
+  }
+}
+@media (min-width: 1536px) {
+  :root {
+    --start-container: calc((100vw - 1536px)/2);
+  }
+}

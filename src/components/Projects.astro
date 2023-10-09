@@ -1,0 +1,79 @@
+---
+import Carousel from "./Carousel.astro";
+
+import type { buttonProps } from "./button.astro";
+
+export type TCarouselData = {
+  img: string;
+  title: string;
+  lead: string;
+  links: {
+    hostedUrl: buttonProps;
+    githubUrl?: buttonProps;
+  };
+};
+
+const carouselData: TCarouselData[] = [
+  {
+    img: "images/projects/anais.png",
+    title: "Portfolio Brand & UX/UI designer",
+    lead: "Intégration de maquettes avec animations au scroll",
+    links: {
+      hostedUrl: {
+        type: "out",
+        name: "Accéder au projet",
+        url: "https://anais-portfolio.vercel.app/",
+      },
+      githubUrl: {
+        type: "out",
+        name: "Github",
+        url: "https://github.com/louisLasserre/Ana-sPortfolio.git",
+      },
+    },
+  },
+  {
+    img: "/images/projects/musee.png",
+    title: "Embrouille au musée",
+    lead: "Jeu intéractif réalisé pour le musée des beaux arts de Bordeaux, avec une équipe de 5",
+    links: {
+      hostedUrl: {
+        type: "out",
+        name: "Accéder au projet",
+        url: "https://embrouille-au-musee.netlify.app/",
+      },
+    },
+  },
+  {
+    img: "images/projects/exoape-one.png",
+    title: "Reproduction Exo ape",
+    lead: "Reproduction d'un site des awwwards, premier projet créatif",
+    links: {
+      hostedUrl: {
+        type: "out",
+        name: "Accéder au projet",
+        url: "https://louis-exoape.netlify.app/",
+      },
+    },
+  },
+  {
+    img: "images/projects/space.png",
+    title: "Travel in space",
+    lead: "Étant passioné d'espace il était évidant pour moi de faire un site sur le sujet",
+    links: {
+      hostedUrl: {
+        type: "out",
+        name: "Accéder au projet",
+        url: "https://louis-space-program.netlify.app/",
+      },
+    },
+  },
+];
+---
+
+<section class="container mx-auto">
+  <p class="max-w-3xl">
+    Voici certains de mes projets. Ce sont des projets personnels ou réalisé en
+    groupe pour certains.
+  </p>
+  <Carousel {carouselData} />
+</section>

@@ -1,0 +1,37 @@
+---
+import Drawings from "./Drawings.astro";
+
+import Accessibility from "./drawings/Accessibility.astro";
+import Ecoconception from "./drawings/Ecoconception.astro";
+import Maintenabilite from "./drawings/Maintenabilite.astro";
+
+const drawings = [
+  {
+    title: "L'éco-conception",
+    description:
+      "Au coeur de mes projets, elle me permet de réaliser des sites rapides et respectueux de l’environnement",
+    Icon: Ecoconception,
+  },
+  {
+    title: "L'accessibilité",
+    description:
+      "Un site accessible à tous sur n’import quel appareil est pour moi la base d’un projet web réussi",
+    Icon: Accessibility,
+  },
+  {
+    title: "Maintenabilité",
+    description:
+      "Pour offrir une expérience développeur et client la meilleure possible tout au long des années",
+    Icon: Maintenabilite,
+  },
+];
+---
+
+<section class="container mx-auto">
+  <p class="max-w-3xl mb-6">
+    Après avoir travaillé pendant plusieurs années sur divers projets web ainsi
+    qu’en ayant obtenu la certification opquast, je base chacun de mes travaux
+    sur 3 piliers fondamentaux
+  </p>
+  <Drawings data={drawings} />
+</section>

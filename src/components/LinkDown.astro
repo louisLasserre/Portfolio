@@ -1,0 +1,17 @@
+---
+import ArrowDown from "./icons/ArrowDown.astro";
+
+interface LinkDownProps {
+  href: string;
+  MyClass: string;
+}
+
+const { href, MyClass } = Astro.props as LinkDownProps;
+---
+
+<a href={href} class={`${MyClass}`}>
+  <div class="flex flex-col items-center gap-4">
+    <slot />
+    <ArrowDown />
+  </div>
+</a>

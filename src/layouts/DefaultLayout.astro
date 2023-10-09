@@ -1,0 +1,43 @@
+---
+import "modern-normalize";
+import "../stylesheet/main.css";
+
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Louis LASSERRE | Portfolio</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <meta
+      name="description"
+      content="Déveoppeur Web à Bordeaux, voici mon portfolio"
+    />
+    <meta property="og:title" content="Louis LASSERRE | Portfolio" />
+    <meta
+      property="og:description"
+      content="Déveoppeur Web à Bordeaux, voici mon portfolio"
+    />
+    <meta property="og:image" content="/images/android-chrome-512x512.png" />
+
+    {/* With Default properties */}
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="robots" content="all" />
+
+    <meta name="distribution" content="global" />
+    <meta name="content-language" content="fr" />
+    <meta name="author" content="Louis LASSERRE" />
+
+    <!-- <script src="../utils/scroll-animate.js"></script> -->
+  </head>
+
+  <body class="layout">
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>

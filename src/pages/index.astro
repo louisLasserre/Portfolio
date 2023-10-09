@@ -1,0 +1,79 @@
+---
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+import Hero from "../components/Hero.astro";
+
+import { getDirectusClient } from "../utils/get-directus-client";
+
+import Principes from "../components/Principes.astro";
+import Projects from "../components/Projects.astro";
+import { APIbuilderData, importComponents } from "src/utils/import-components";
+import SectionTitle from "@components/SectionTitle.astro";
+import AboutMe from "@components/AboutMe.astro";
+import LinkDown from "@components/LinkDown.astro";
+import Contact from "@components/Contact.astro";
+import Footer from "@components/Footer.astro";
+
+// const directus = await getDirectusClient();
+// const response = await directus.items("Project").readByQuery({
+//   fields: ["*", "test.collection", "test.item"],
+// });
+
+// const projects = response.data;
+// if (!projects) {
+//   console.error("no projects were found");
+//   return null;
+// }
+// const firstProject = projects[0];
+
+// let componentsToImport: APIbuilderData[] = firstProject.test;
+
+// const components = await importComponents(componentsToImport);
+
+const contactData = [
+  {
+    icon: "phone",
+    label: "06 15 60 70 07",
+    link: {
+      type: "in",
+      name: "link",
+      url: "tel:+33615607007",
+    },
+  },
+  {
+    icon: "mail",
+    label: "louis.lasserre33@gmail.com",
+    link: {
+      type: "in",
+      name: "link",
+      url: "mailto:louis.lasserre33@gmail.com",
+    },
+  },
+];
+---
+
+<DefaultLayout>
+  <main>
+    <!-- {
+      components.map((Component) => {
+        return Component.then((Result) => <Result />);
+      })
+    } -->
+    <Hero />
+    <SectionTitle number={1} title="Mes *principes" id="mes-principes" />
+
+    <Principes />
+    <SectionTitle
+      number={2}
+      title="Projets *Principaux"
+      id="projets-principaux"
+    />
+    <Projects />
+    <SectionTitle number={3} title="À *propos" id="a-propos" />
+    <AboutMe />
+    <LinkDown href="/#me-contacter" MyClass="my-8 block">
+      <p class="font-title">Curieux ou intéressé ? contactez moi</p>
+    </LinkDown>
+    <SectionTitle number={4} title="Me *contacter" id="me-contacter" />
+    <Contact contactData={contactData} />
+  </main>
+</DefaultLayout>

@@ -1,0 +1,143 @@
+---
+import type { TCarouselData } from "./Projects.astro";
+import Button from "./button.astro";
+import CarouselNext from "./icons/CarouselNext.astro";
+import CarouselPrev from "./icons/CarouselPrev.astro";
+
+const { carouselData } = Astro.props;
+---
+
+<div class="carousel flex justify-center mt-8">
+  <button id="carousel-prev" aria-label="Previous slide"
+    ><CarouselPrev /></button
+  >
+  <div class="container overflow-hidden w-[80vw]">
+    <div class="carousel-content flex transition-transform duration-300">
+      {
+        carouselData.map((element: TCarouselData, index: number) => {
+          const { title, img, lead, links } = element;
+
+          return (
+            <div
+              class="min-w-[80vw] lg:min-w-[26.7vw] 2xl:min-w-[25.6vw] carousel-element px-4"
+              index={index + 1}
+            >
+              <div class="mx-auto w-fit text-center shadow-lg mb-6 lg:w-full lg:bordered-black">
+                <div class="w-full aspect-video ">
+                  <img
+                    class="object-cover w-full h-full"
+                    src={img}
+                    alt="image de preview du projet"
+                  />
+                </div>
+                <div class="bordered-black border-t-0 lg:border-0 mb-1 text-left">
+                  <p class="font-button text-secondary text-h3 mb-3">{title}</p>
+                  <p class=" mb-3">{lead}</p>
+                  <Button link={links.hostedUrl} />
+                  <div class="mt-2">
+                    {links.githubUrl && <Button link={links.githubUrl} />}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+  <button id="carousel-next" aria-label="Next slide"><CarouselNext /></button>
+</div>
+<div class="carousel-btns flex gap-2 justify-center">
+  {
+    carouselData.map((element: TCarouselData, index: number) => {
+      return (
+        <button
+          class=" flex-grow py-6 max-w-[6rem] carousel-btn"
+          aria-label={`go to slide number ${index + 1}`}
+        >
+          <div class="bg-black h-[3px] " carousel-btn-index={index + 1} />
+        </button>
+      );
+    })
+  }
+</div>
+
+<script>
+  let active = 1;
+  let containerWidth = 0;
+  let elementWidth = 0;
+
+  const nextBtn = document.querySelector("#carousel-next") as HTMLButtonElement;
+  const prevBtn = document.querySelector("#carousel-prev") as HTMLButtonElement;
+
+  const btnsSection = document.querySelector(
+    ".carousel-btns"
+  ) as HTMLButtonElement;
+
+  const content = document.querySelector(
+    ".carousel-content"
+  ) as HTMLButtonElement;
+
+  const elements: HTMLElement[] = Array.from(
+    document.querySelectorAll(".carousel-element")
+  );
+
+  const init = () => {
+    document
+      .querySelector(`[carousel-btn-index="${active}"]`)
+      .classList.toggle("bg-secondary");
+
+    elements.forEach((element) => {
+      containerWidth += element.offsetWidth;
+    });
+    elementWidth = containerWidth / elements.length;
+  };
+  init();
+
+  btnsSection.addEventListener("click", (e) => {
+    e.preventDefault;
+    const element = e.target as HTMLElement;
+    if (element.classList.contains("carousel-btn")) {
+      const valueClicked =
+        element.firstElementChild.attributes["carousel-btn-index"].value;
+
+      setActive(valueClicked);
+    }
+  });
+
+  const setActive = (target: number) => {
+    let actualyActiveButton = document.querySelector(
+      `[carousel-btn-index="${active}"]`
+    ) as HTMLElement;
+
+    let nextTransform: number = elementWidth * (target - 1);
+    active = target;
+
+    if (target > elements.length) {
+      nextTransform = 0;
+
+      active = 1;
+    }
+    if (target == 0) {
+      nextTransform = elementWidth * (elements.length - 1);
+      active = elements.length;
+    }
+
+    let nextActiveButton: HTMLElement = document.querySelector(
+      `[carousel-btn-index="${active}"]`
+    ) as HTMLElement;
+
+    actualyActiveButton.classList.toggle("bg-secondary");
+    nextActiveButton.classList.toggle("bg-secondary");
+    content.style.transform = `translateX(-${nextTransform}px)`;
+  };
+
+  nextBtn.addEventListener("click", (e) => {
+    e.preventDefault;
+    setActive(active + 1);
+  });
+  prevBtn.addEventListener("click", (e) => {
+    e.preventDefault;
+    setActive(active - 1);
+  });
+</script>

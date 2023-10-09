@@ -1,0 +1,87 @@
+---
+import LinkColumn from "@components/LinkColumn.astro";
+import PurpleHeart from "@components/icons/PurpleHeart.astro";
+
+import Github from "@assets/icons/Github.png";
+import Linkedin from "@assets/icons/Linkedin.png";
+
+const currentYear = new Date().getFullYear();
+
+//© {currentYear} Monospace Inc
+
+const PlanDuSiteLinks = [
+  {
+    type: "in",
+    name: "Projets",
+    url: "/#mes-projets",
+  },
+  {
+    type: "in",
+    name: "À propos",
+    url: "/#a-propos",
+  },
+  {
+    type: "in",
+    name: "Contact",
+    url: "/#dejobnpm",
+  },
+];
+const LegalsLinks = [
+  {
+    type: "in",
+    name: "Mentions légales",
+    url: "/legals",
+  },
+];
+---
+
+<footer class="bg-primary text-white py-8 mt-8">
+  <div class="container mx-auto">
+    <div class="flex flex-col md:flex-row md:justify-between">
+      <article>
+        <p class="font-title size-h2 md:leading-[4.3rem]">
+          Louis<br />LASSERRE
+        </p>
+        <p class="block mt-2 md:mt-6">
+          Développeur <span class="text-secondaryContrast"
+            >front-end créatif</span
+          >
+        </p>
+      </article>
+      <nav class="md:flex md:align-top gap-12 md:mr-20">
+        <LinkColumn links={PlanDuSiteLinks} title="Plan du site" />
+        <LinkColumn links={LegalsLinks} title="Legals" />
+      </nav>
+    </div>
+    <p class="mt-6 w-full text-center md:text-left">
+      Made with <PurpleHeart /> using <a
+        class="text-secondaryContrast"
+        href="/https://astro.build/">Astro</a
+      >
+    </p>
+    <div class="h-[0.15rem] bg-white w-full my-4"></div>
+    <div class="flex justify-between">
+      <p class="md:block">
+        © {currentYear} Louis LASSERRE Tous droits réservervés
+      </p>
+      <div class="">
+        <a target="_blank" class="mr-2" href="https://github.com/louisLasserre"
+          ><img
+            class="w-8 inline-block"
+            src={Github}
+            alt="accéder à mon github"
+          /></a
+        >
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/louis-lasserre-0a8308222/"
+          ><img
+            class="w-8 inline-block"
+            src={Linkedin}
+            alt="accéder à mon linkedin"
+          /></a
+        >
+      </div>
+    </div>
+  </div>
+</footer>

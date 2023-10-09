@@ -1,0 +1,67 @@
+---
+import ArrowDown from "./icons/ArrowDown.astro";
+import GreenDot from "./icons/GreenDot.astro";
+import Location from "./icons/Location.astro";
+import CircleMe from "@assets/svgs/CircleMe.svg";
+import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
+---
+
+<section
+  class="h-[100vh] container mx-auto flex flex-col justify-between pt-16 pb-2"
+>
+  <div class="max-w-lg">
+    <h1 class="uppercase size-h1 leading-[4rem] md:leading-[6rem] mb-4 mt-4">
+      Front-end développeur
+    </h1>
+    <div class="items-center gap-3 flex" data-disapear>
+      <GreenDot />
+      <p class="">Full stack Next développeur pour yalink</p>
+    </div>
+    <div class="items-center gap-3 flex my-4" data-disapear>
+      <Location />
+      <p class="">Situé à Bordeaux</p>
+    </div>
+    <p>
+      Spécialisé dans le développement front-end, je travail toutefois également
+      sur du back-end, principalement en nodeJs.
+    </p>
+  </div>
+  <div
+    class="flex justify-between md:items-end items-center flex-col-reverse md:flex-row h-3/5"
+  >
+    <a href="/#mes-principes">
+      <div class="relative mb-6 ml-6">
+        <img
+          src={CircleScrollDown}
+          class="absolute h-[185%] max-w-none aspect-square left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          alt="click to scroll down"
+        />
+        <ArrowDown />
+      </div>
+    </a>
+
+    <div class="relative">
+      <a href="/#a-propos">
+        <div
+          class="w-36 aspect-square md:absolute left-4 md:-translate-y-1/3 md:-translate-x-1/3 block"
+        >
+          <img
+            class="absolute max-w-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[125%]"
+            src={CircleMe}
+            alt="text: click me"
+          />
+          <img
+            class="w-full h-full object-contain"
+            src="/images/Me.png"
+            alt="image de profile : Louis LASSERRE"
+          />
+        </div>
+      </a>
+      <p
+        class="font-title size-h1 uppercase md:flex flex-col text-right leading-[7rem] hidden"
+      >
+        <span>Louis</span><span>LASSERRE</span>
+      </p>
+    </div>
+  </div>
+</section>

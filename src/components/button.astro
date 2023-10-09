@@ -1,0 +1,25 @@
+---
+import ChevronDroiteSecondary from "./icons/ChevronDroiteSecondary.astro";
+
+type Tlink = "in" | "out";
+
+export type TLinkType = {
+  type: Tlink;
+  name: string;
+  url: string;
+};
+export interface buttonProps {
+  link: TLinkType;
+}
+const { link } = Astro.props as buttonProps;
+const { type, name, url } = link;
+---
+
+<a
+  href={url}
+  target={type === "out" ? "_blank" : "_self"}
+  class="font-button inline-flex items-center gap-4"
+>
+  {name}
+  <ChevronDroiteSecondary />
+</a>

@@ -1,0 +1,33 @@
+---
+export interface Props {
+  number: number;
+  title: string;
+  id: string;
+}
+const { number, title, id } = Astro.props;
+
+let texts = title.split("*");
+---
+
+<section class="mx-auto py-10" id={id}>
+  <h2 class="relative size-h2 text-secondary pl-c inline-block">
+    <span
+      class="md:border-b-[5px] border-b-[3px] border-primary absolute left-0 right-2 bottom-[38.5%]"
+    ></span>
+    <span class="bg-background relative">#{number}</span>
+  </h2>
+  <h2
+    class="relative size-h2 text-primary pr-container block ml-28 md:ml-[15rem]"
+  >
+    <span class="bg-background px-1 whitespace-nowrap">
+      {texts[0]}
+
+      <span class="relative md:static bg-background px-1">
+        {texts[1]}
+        <span
+          class="md:border-b-[5px] border-b-[3px] md:border-primary absolute md:left-0 md:right-0 md:bottom-[25.5%] left-0 w-[80vw] md:w-auto -bottom-2 border-secondary -z-10"
+        ></span>
+      </span>
+    </span>
+  </h2>
+</section>
