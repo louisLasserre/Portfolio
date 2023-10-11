@@ -85,6 +85,9 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
   }
   .hoverImg {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .hoverImg .smallerCircle,
   .hoverImg .biggerCircle {
@@ -94,10 +97,8 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
     border-radius: 50%;
     aspect-ratio: 1;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 0.2s, background-color 0.2s;
+
+    transition: transform 0.2s;
   }
   .hoverImg .smallerCircle {
     width: 250%;
@@ -105,15 +106,49 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
     z-index: 10;
   }
   .hoverImg .smallerCircle:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-    background-color: #ececec1e;
+    transform: scale(1.1);
   }
   .hoverImg .biggerCircle:hover {
-    transform: translate(-50%, -50%) scale(1.04);
+    transform: scale(1.02);
   }
   .hoverImg .biggerCircle {
+    --x: 50%;
     width: 70vw;
     border-color: #b3b3b378;
     z-index: 8;
   }
 </style>
+
+<script>
+  const biggercircle = document.querySelector(".biggerCircle");
+  const smallerCircle = document.querySelector(".smallerCircle");
+  function animateBiggerCircle(element: Element, ratio: number) {
+    if (!biggercircle) {
+      return;
+    }
+
+    const elementWidth = element.clientWidth;
+    const elementHeight = element.clientHeight;
+    element.addEventListener("mousemove", ({ offsetX, offsetY }) => {
+      // console.log(offsetX, offsetY);
+
+      const offsetXToApply = elementWidth - (offsetX + elementWidth / 2);
+      const offsetYToApply = elementHeight - (offsetY + elementHeight / 2);
+
+      // element.style.right = `${offsetXToApply * ratio}px`;
+      // element.style.bottom = `${offsetYToApply * ratio}px`;
+      element.style.transition = "transform 0.05s";
+      element.style.transform = `translate(${-offsetXToApply * ratio}px, ${
+        -offsetYToApply * ratio
+      }px)`;
+
+      //element.style.setProperty("--x", `calc(50% - ${offsetXToApply}px)`);
+    });
+    element.addEventListener("mouseleave", (e) => {
+      element.style.transition = "transform 0.2s";
+      element.style.transform = "translate(0px, 0px)";
+    });
+  }
+  animateBiggerCircle(biggercircle, 0.04);
+  animateBiggerCircle(smallerCircle, 0.08);
+</script>
