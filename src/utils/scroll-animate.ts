@@ -1,3 +1,9 @@
+import {
+  animateDrawing,
+  animateElementonScroll,
+  animateScrollDown,
+} from "./animations";
+
 interface IAnimation {
   animationName: string;
   elementToAnimate: HTMLElement;
@@ -11,42 +17,44 @@ window.addEventListener("DOMContentLoaded", (event) => {
   //setAnimations();
 });
 
-function animateScrollDown(element: HTMLElement, percent: number) {
-  element.style.transform = `translate(-50%, -50%) rotate(${percent * 1.2}deg)`;
-}
+const scrollDownSvg = document.querySelector("[data-animate]");
+const drawings = document.querySelectorAll(
+  "[data-animate-drawing]"
+) as NodeListOf<SVGGeometryElement>;
 
-const animateElement = document.querySelector("[data-animate]");
+drawings.forEach((drawing) => {
+  const length = drawing.getTotalLength();
+
+  // The start position of the drawing
+  drawing.style.strokeDasharray = `${length}`;
+  drawing.length = length;
+
+  // Hide the triangle by offsetting dash. Remove this line to show the triangle before scroll draw
+  drawing.style.strokeDashoffset = `${length}`;
+});
+
 document.addEventListener("scroll", (event) => {
-  const { top, bottom } = animateElement?.getBoundingClientRect();
+  animateElementonScroll(scrollDownSvg, animateScrollDown);
 
-  //console.log(top - window.innerHeight, bottom);
-
-  if (top - window.innerHeight < 0 && bottom > 0) {
-    const topAtBot = top - window.innerHeight;
-    const totalDistance = window.innerHeight + (bottom - top);
-    const positiveTopDistance = Math.abs(topAtBot);
-
-    const percentOfAnimation =
-      ((totalDistance + positiveTopDistance) * 100) / totalDistance - 100;
-    animateScrollDown(animateElement, percentOfAnimation);
-  }
+  drawings.forEach((drawing) =>
+    animateElementonScroll(drawing, animateDrawing, {
+      endInset: 0.24,
+      startInset: 0.08,
+    })
+  );
 
   // let actualScreenTopScroll = window.scrollY;
   // let actualScreenBottomScroll = window.scrollY + window.screen.availHeight;
-
   // console.log(actualScreenTopScroll, actualScreenBottomScroll);
-
   // let animate = animations.filter(
   //   (animation) =>
   //     animation.end > actualScreenTopScroll &&
   //     animation.start < actualScreenBottomScroll
   // );
   // console.log({ animate });
-
   // animate.forEach((animation) => {
   //   let test = animation.animationName;
   //   console.log(test);
-
   //   //test();
   // });
 });
