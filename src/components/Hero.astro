@@ -46,7 +46,7 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
         class="w-36 aspect-square md:absolute left-4 md:-translate-y-1/3 md:-translate-x-1/3 block"
       >
         <div class="hoverImg">
-          <div class="smallerCircle"></div>
+          <div class="smallerCircle hidden sm:block"></div>
           <div class="biggerCircle"></div>
           <a href="/#a-propos">
             <!-- <img
@@ -92,7 +92,6 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
   .hoverImg .smallerCircle,
   .hoverImg .biggerCircle {
     content: "";
-    display: block;
     border: 1px solid;
     border-radius: 50%;
     aspect-ratio: 1;
@@ -122,7 +121,7 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
 <script>
   const biggercircle = document.querySelector(".biggerCircle");
   const smallerCircle = document.querySelector(".smallerCircle");
-  function animateBiggerCircle(element: Element, ratio: number) {
+  function animateBiggerCircle(element: HTMLElement, ratio: number) {
     if (!biggercircle) {
       return;
     }
@@ -137,7 +136,7 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
 
       // element.style.right = `${offsetXToApply * ratio}px`;
       // element.style.bottom = `${offsetYToApply * ratio}px`;
-      element.style.transition = "transform 0.05s";
+      element.style.transition = "transform 0s";
       element.style.transform = `translate(${-offsetXToApply * ratio}px, ${
         -offsetYToApply * ratio
       }px)`;

@@ -37,8 +37,19 @@ import Footer from "@components/Footer.astro";
   </head>
 
   <body class="layout">
-    <Header />
-    <slot />
+    <div class="mainContent">
+      <Header />
+      <slot />
+    </div>
     <Footer />
   </body>
 </html>
+
+<style>
+  .mainContent {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 4rem;
+    @apply bg-background;
+  }
+</style>
