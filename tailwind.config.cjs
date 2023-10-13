@@ -7,7 +7,7 @@ module.exports = {
         background: "#E0DFDD",
         primary: "#0E0E0E",
         secondary: "#7000FF",
-        secondaryContrast: "#9052FF",
+        secondaryContrast: "#B08CEC",
       },
       borderRadius: 0,
       fontFamily: {

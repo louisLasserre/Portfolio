@@ -13,10 +13,6 @@ interface IAnimation {
 
 let animations: IAnimation[] = [];
 
-window.addEventListener("DOMContentLoaded", (event) => {
-  //setAnimations();
-});
-
 const scrollDownSvg = document.querySelector("[data-animate]");
 const drawings = document.querySelectorAll(
   "[data-animate-drawing]"

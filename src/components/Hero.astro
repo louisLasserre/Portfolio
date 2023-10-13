@@ -2,7 +2,7 @@
 import ArrowDown from "./icons/ArrowDown.astro";
 import GreenDot from "./icons/GreenDot.astro";
 import Location from "./icons/Location.astro";
-import CircleMe from "@assets/svgs/CircleMe.svg";
+
 import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
 ---
 
@@ -15,7 +15,12 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
     </h1>
     <div class="items-center gap-3 flex" data-disapear>
       <GreenDot />
-      <p class="">Full stack Next développeur pour yalink</p>
+      <p class="">
+        Full stack Next développeur pour <a
+          href="https://www.yalink.fr/"
+          data-follow="The yak team !">yalink</a
+        >
+      </p>
     </div>
     <div class="items-center gap-3 flex my-4" data-disapear>
       <Location />
@@ -58,6 +63,7 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
               class="w-full h-full object-contain"
               src="/images/Me.png"
               alt="image de profile : Louis LASSERRE"
+              data-follow="click to see more 👀"
             />
           </a>
         </div>

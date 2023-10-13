@@ -4,6 +4,7 @@ import "../stylesheet/main.css";
 
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import FollowingTag from "@components/FollowingTag.astro";
 ---
 
 <html lang="fr">
@@ -35,21 +36,21 @@ import Footer from "@components/Footer.astro";
     <script src="../utils/scroll-animate.js"></script>
     <!-- <script src="../utils/scroll-animations.js"></script> -->
   </head>
-
   <body class="layout">
     <div class="mainContent">
       <Header />
+      <FollowingTag />
       <slot />
     </div>
     <Footer />
   </body>
-</html>
 
-<style>
-  .mainContent {
-    position: relative;
-    z-index: 2;
-    padding-bottom: 4rem;
-    @apply bg-background;
-  }
-</style>
+  <style>
+    .mainContent {
+      position: relative;
+      z-index: 2;
+      padding-bottom: 4rem;
+      @apply bg-background;
+    }
+  </style>
+</html>

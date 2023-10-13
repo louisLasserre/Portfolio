@@ -1,0 +1,81 @@
+---
+---
+
+<div class="followingTag off"><p class="innerText">Salut la team</p></div>
+
+<style>
+  .innerText {
+    padding: 0.6rem 1rem;
+    color: aliceblue;
+    font-size: 12px;
+  }
+  .followingTag {
+    margin: 20px;
+    width: fit-content;
+    height: fit-content;
+    z-index: 150;
+    transform-origin: top left;
+    border-radius: 16px;
+    overflow: hidden;
+
+    transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+    background-color: black;
+    animation: 0.6s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+
+    position: absolute;
+  }
+  .on {
+    animation-name: inset;
+    clip-path: circle(130% at 10% 10%);
+  }
+  .off {
+    animation-name: inset reverse;
+    clip-path: circle(0% at 6% 10%);
+  }
+
+  @keyframes inset {
+    0% {
+      clip-path: circle(0% at 6% 10%);
+    }
+    100% {
+      clip-path: circle(130% at 6% 10%);
+    }
+  }
+</style>
+
+<script>
+  const box = document.querySelector(".followingTag") as HTMLElement | null;
+  const innerText = document.querySelector(".innerText") as HTMLElement | null;
+
+  function on() {
+    if (box?.classList.contains("on")) {
+      return;
+    }
+    box?.classList.remove("off");
+    box?.classList.add("on");
+  }
+  function off() {
+    if (box?.classList.contains("off")) {
+      return;
+    }
+    box?.classList.remove("on");
+    box?.classList.add("off");
+  }
+
+  document.addEventListener("mousemove", (e) => {
+    console.log(e);
+    e.stopPropagation();
+    box.style.transform = `translate(${e.pageX}px, ${e.pageY}px)`;
+    if (!e.target || !("dataset" in e.target)) {
+      return;
+    }
+
+    if (e.target.dataset.follow) {
+      innerText.innerHTML = e.target.dataset.follow;
+      on();
+      return;
+    }
+    off();
+  });
+</script>

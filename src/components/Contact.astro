@@ -4,15 +4,16 @@ import File from "./icons/File.astro";
 import Mail from "./icons/Mail.astro";
 import Phone from "./icons/Phone.astro";
 
-interface ContactProps {
+interface Props {
   contactData: {
     icon: "phone" | "mail" | "file";
+    name: string;
     label: string;
     link: TLinkType;
   }[];
 }
 
-const { contactData } = Astro.props as ContactProps;
+const { contactData } = Astro.props;
 
 const correspondingIcons = { phone: Phone, mail: Mail, file: File };
 ---
@@ -24,19 +25,19 @@ const correspondingIcons = { phone: Phone, mail: Mail, file: File };
     contactData.map((data) => {
       let Element = correspondingIcons[data.icon];
       return (
-        <a href={data.link.url} class="mt-6 block">
+        <a
+          href={data.link.url}
+          class="mt-6 block"
+          aria-label={`mon ${data.name}, Au plaisir de se rencontrer autour d’un café ☕️`}
+        >
           <div class="flex gap-8">
             <Element />
-            <p>{data.label}</p>
+            <p data-follow="Au plaisir de se rencontrer autour d’un café ☕️">
+              {data.label}
+            </p>
           </div>
         </a>
       );
     })
   }
-
-  <p class="block mt-6">
-    Au plaisir de se rencontrer autour d’un <span class="text-secondary mr-2"
-      >café</span
-    > ☕️
-  </p>
 </section>
