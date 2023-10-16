@@ -64,7 +64,6 @@
   }
 
   document.addEventListener("mousemove", (e) => {
-    console.log(e);
     e.stopPropagation();
     box.style.transform = `translate(${e.pageX}px, ${e.pageY}px)`;
     if (!e.target || !("dataset" in e.target)) {

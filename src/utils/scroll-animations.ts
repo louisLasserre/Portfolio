@@ -1,7 +1,5 @@
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    console.log(entry);
-
     if (entry.isIntersecting) {
       entry.target.classList.add("is-inview");
     }
@@ -11,9 +9,6 @@ const observerContinue = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        console.log("hey");
-        console.log(entry.intersectionRatio);
-
         entry.target.style.transform = "translate(-50%, -50%) rotate(130deg)";
       }
     });
