@@ -25,11 +25,7 @@ const correspondingIcons = { phone: Phone, mail: Mail, file: File };
     contactData.map((data) => {
       let Element = correspondingIcons[data.icon];
       return (
-        <a
-          href={data.link.url}
-          class="mt-6 block"
-          aria-label={`mon ${data.name}, Au plaisir de se rencontrer autour d’un café ☕️`}
-        >
+        <a href={data.link.url} class="mt-6 block">
           <div class="flex gap-8">
             <Element />
             <p data-follow="Au plaisir de se rencontrer autour d’un café ☕️">
