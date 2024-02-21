@@ -1,4 +1,4 @@
-export function animateElementonScroll(
+export function animateElementOnScroll(
   element: HTMLElement | Element,
   callback: (
     element: HTMLElement | Element,

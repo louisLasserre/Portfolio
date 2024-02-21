@@ -1,5 +1,5 @@
-import { animateDrawing, animateScrollDown } from "./animations";
-import { animateElementonScroll } from "./nativeScrollTrigger/scrollAnimate";
+import { animateElementOnScroll, drawSvg } from "./animate-on-scroll";
+import { animateScrollDown } from "./animations";
 
 interface IAnimation {
   animationName: string;
@@ -27,10 +27,10 @@ drawings.forEach((drawing) => {
 });
 
 document.addEventListener("scroll", (event) => {
-  animateElementonScroll(scrollDownSvg, animateScrollDown);
+  animateElementOnScroll(scrollDownSvg, animateScrollDown);
 
   drawings.forEach((drawing) =>
-    animateElementonScroll(drawing, animateDrawing, {
+    animateElementOnScroll(drawing, drawSvg, {
       endInset: 0.24,
       startInset: 0.08,
     })
