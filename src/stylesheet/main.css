@@ -2,33 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
-  font-family: 'Merriweather-sans';
-  src: url('/fonts/MerriweatherSans-Regular.ttf') format('truetype');
+  font-family: "Merriweather-sans";
+  src: url("/fonts/MerriweatherSans-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
-  font-display: swap
+  font-display: swap;
 }
 @font-face {
-  font-family: 'Raleway-regular';
-  src: url('/fonts/Raleway-Regular.ttf') format('truetype');
+  font-family: "Raleway-regular";
+  src: url("/fonts/Raleway-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap
+  font-display: swap;
 }
 @font-face {
-  font-family: 'Raleway-semibold';
-  src: url('/fonts/Raleway-SemiBold.ttf') format('truetype');
+  font-family: "Raleway-semibold";
+  src: url("/fonts/Raleway-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
-  font-display: swap
+  font-display: swap;
 }
 
-
-
 @layer base {
-
   .bordered-black {
     @apply border-[2px] border-primary p-2;
   }
@@ -43,16 +39,15 @@
   }
   @media screen and (min-width: 767px) {
     .size-h1 {
-      @apply text-Xlh1
+      @apply text-Xlh1;
     }
     .size-h2 {
-      @apply text-Xlh2
+      @apply text-Xlh2;
     }
     .size-h3 {
-      @apply text-Xlh3
+      @apply text-Xlh3;
     }
   }
-
 }
 img {
   -webkit-user-select: none;
@@ -62,7 +57,6 @@ img {
   user-select: none;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
@@ -71,28 +65,53 @@ a {
   text-decoration: underline;
 }
 
+span.animateLetters {
+  overflow: hidden;
+  display: flex;
+}
 
+.animatedLetter {
+  animation-fill-mode: forwards;
+  animation-name: letterFromB;
+  animation-duration: 0.4s;
+  transform: translateY(120%) rotate(16deg);
+  display: inline-block;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+/*cubic-bezier(0.165, 0.84, 0.44, 1)*/
+@keyframes letterFromB {
+  0% {
+    transform: translateY(120%) rotate(30deg);
+  }
+  100% {
+    transform: translateY(0%) rotate(0deg);
+  }
+}
 
-html, body {
+html,
+body {
   width: 100vw;
   overflow-x: hidden;
 }
-
 
 div[data-disapear] {
   transition: all 0.2s;
 }
 
-
-
-
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply font-title;
 }
-a, button {
+a,
+button {
   @apply font-button;
 }
-p, span {
+p,
+span  {
   @apply font-text;
 }
 
@@ -100,22 +119,19 @@ body {
   @apply bg-background;
 }
 
-
-
 /* ---------------cointainer stuff ---------------------*/
 @layer components {
   .container {
-    @apply px-4
+    @apply px-4;
   }
 }
 
 .ml-c {
   margin-left: var(--start-container);
-  @apply md:px-4
+  @apply md:px-4;
 }
 .pl-c {
   padding-left: var(--start-container);
-
 }
 
 :root {
@@ -124,26 +140,26 @@ body {
 
 @media (min-width: 640px) {
   :root {
-    --start-container: calc((100vw - 640px)/2);
+    --start-container: calc((100vw - 640px) / 2);
   }
 }
 @media (min-width: 768px) {
   :root {
-    --start-container: calc((100vw - 768px)/2);
+    --start-container: calc((100vw - 768px) / 2);
   }
 }
 @media (min-width: 1024px) {
   :root {
-    --start-container: calc((100vw - 1024px)/2);
+    --start-container: calc((100vw - 1024px) / 2);
   }
 }
 @media (min-width: 1280px) {
   :root {
-    --start-container: calc((100vw - 1280px)/2);
+    --start-container: calc((100vw - 1280px) / 2);
   }
 }
 @media (min-width: 1536px) {
   :root {
-    --start-container: calc((100vw - 1536px)/2);
+    --start-container: calc((100vw - 1536px) / 2);
   }
 }

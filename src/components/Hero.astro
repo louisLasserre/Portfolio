@@ -9,9 +9,10 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
 <section
   class="h-[100vh] container mx-auto flex flex-col justify-between pt-16 pb-2"
 >
-  <div class="max-w-lg">
-    <h1 class="uppercase size-h1 leading-[4rem] md:leading-[6rem] mb-4 mt-4">
-      Front-end développeur
+  <div class="max-w-[37rem]">
+    <h1 class="uppercase size-h1 leading-[4rem] md:leading-[6.6rem] mb-4 mt-4">
+      <span class="animateLetters">Front-end</span>
+      <span class="animateLetters"> développeur</span>
     </h1>
     <div class="items-center gap-3 flex" data-disapear>
       <GreenDot />
@@ -122,11 +123,82 @@ import CircleScrollDown from "@assets/svgs/CircleScrollDown.svg";
     border-color: #b3b3b378;
     z-index: 8;
   }
+
+  .smallerCircle {
+    transform: scale(1);
+    animation-duration: 0.6s;
+    animation-name: growingcircle;
+
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .biggerCircle {
+    transform: scale(1);
+    animation-duration: 0.8s;
+    animation-name: growingBiggercircle;
+
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  @keyframes growingBiggercircle {
+    0% {
+      transform: scale(0.2);
+    }
+    70% {
+      transform: scale(1.1);
+    }
+    75% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes growingcircle {
+    0% {
+      transform: scale(0.2);
+    }
+    70% {
+      transform: scale(1.2);
+    }
+    75% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 </style>
 
 <script>
+  const animateLettersContainers = Array.from(
+    document.querySelectorAll("span.animateLetters")
+  );
+
+  animateLettersContainers.forEach((animateLettersContainer, index) => {
+    const innerText = animateLettersContainer.textContent;
+
+    if (!innerText) {
+      return;
+    }
+    const letters = innerText.split("");
+
+    animateLettersContainer.innerHTML = "";
+
+    letters.map((letter, i) => {
+      const htmlLetter = document.createElement("span");
+      htmlLetter.classList.add("animatedLetter");
+      htmlLetter.innerText = letter;
+      htmlLetter.style.animationDelay = `${index / 8 + i / 20}s`;
+
+      animateLettersContainer.appendChild(htmlLetter);
+    });
+  });
+
   const biggercircle = document.querySelector(".biggerCircle");
   const smallerCircle = document.querySelector(".smallerCircle");
+  //appearing circle
+
+  //circles
   function animateBiggerCircle(element: HTMLElement, ratio: number) {
     if (!biggercircle) {
       return;
