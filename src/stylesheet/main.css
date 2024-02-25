@@ -73,7 +73,7 @@ span.animateLetters {
 .animatedLetter {
   animation-fill-mode: forwards;
   animation-name: letterFromB;
-  animation-duration: 0.4s;
+  animation-duration: 0.3s;
   transform: translateY(120%) rotate(16deg);
   display: inline-block;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
